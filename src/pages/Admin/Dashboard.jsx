@@ -1,72 +1,78 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Dashboard() {
-  const statsGlobale = {
-    totalStudents: 150,
-    totalExams: 24,
-    averageScore: "14.5 / 20"
-  };
+export default function AdminDashboard() {
+  const navigate = useNavigate();
+  // Simulation de données pour correspondre à votre capture d'écran
+  const [stats, setStats] = useState({
+    students: 150,
+    exams: 24,
+    average: "14.5 / 20"
+  });
 
-  const usersList = [
-    { id: 1, name: "Ahmed", role: "Étudiant", status: "Actif" },
-    { id: 2, name: "Sara", role: "Enseignant", status: "Actif" },
-    { id: 3, name: "Karim", role: "Étudiant", status: "Bloqué" },
-  ];
+  const [users, setUsers] = useState([
+    { id: 1, nom: "Ahmed", role: "Étudiant", statut: "Actif" },
+    { id: 2, nom: "Sara", role: "Enseignant", statut: "Actif" }
+  ]);
 
   return (
-    <div style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-      <h2 className="title-elegant">Vue d'ensemble de la plateforme</h2>
+    <div className="page-container">
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Vue d'ensemble de la plateforme</h1>
+      </div>
 
-      <div className="bento-container">
-        <div className="bento-card">
-          <h3 style={{ color: 'var(--text-muted)', fontSize: '1rem', fontWeight: '500' }}>Étudiants Inscrits</h3>
-          <p style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--accent-color)' }}>{statsGlobale.totalStudents}</p>
+      {/* C'est cette classe 'stats-grid' qui va placer les éléments côte à côte */}
+      <div className="stats-grid">
+        <div className="stat-box">
+          <h3>Étudiants Inscrits</h3>
+          <p className="stat-number">{stats.students}</p>
         </div>
         
-        <div className="bento-card">
-          <h3 style={{ color: 'var(--text-muted)', fontSize: '1rem', fontWeight: '500' }}>Examens Créés</h3>
-          <p style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--success-color)' }}>{statsGlobale.totalExams}</p>
+        <div className="stat-box">
+          <h3>Examens Créés</h3>
+          <p className="stat-number">{stats.exams}</p>
         </div>
         
-        <div className="bento-card">
-          <h3 style={{ color: 'var(--text-muted)', fontSize: '1rem', fontWeight: '500' }}>Moyenne Globale</h3>
-          <p style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--primary-color)' }}>{statsGlobale.averageScore}</p>
+        <div className="stat-box">
+          <h3>Moyenne Globale</h3>
+          <p className="stat-number">{stats.average}</p>
         </div>
       </div>
 
-      <div className="bento-card" style={{ marginTop: '24px' }}>
-        <h3 style={{ marginBottom: '20px', color: 'var(--primary-color)', fontSize: '1.25rem' }}>Gestion des utilisateurs</h3>
-        <table className="elegant-table">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Rôle</th>
-              <th>Statut</th>
-              <th>Actions</th>
+      <div style={{ marginTop: '40px', marginBottom: '20px' }}>
+        <h2 className="dashboard-title" style={{ fontSize: '20px', color: 'var(--primary-color)' }}>
+          Gestion des utilisateurs
+        </h2>
+      </div>
+
+      {/* La classe 'admin-table' va styliser proprement le tableau */}
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Rôle</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.id}>
+              <td>{user.nom}</td>
+              <td>{user.role}</td>
+              <td>
+                <span className="quiz-badge" style={{ backgroundColor: user.statut === 'Actif' ? '#dcfce7' : '#fee2e2', color: user.statut === 'Actif' ? '#166534' : '#991b1b' }}>
+                  {user.statut}
+                </span>
+              </td>
+              <td>
+                <button className="btn-outline" style={{ fontSize: '12px', padding: '4px 8px' }}>Éditer le profil</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {usersList.map(user => (
-              <tr key={user.id}>
-                <td style={{ fontWeight: '500', color: 'var(--primary-color)' }}>{user.name}</td>
-                <td style={{ color: 'var(--text-muted)' }}>{user.role}</td>
-                <td>
-                  <span className={user.status === 'Actif' ? 'badge-success' : 'badge-danger'}>
-                    {user.status}
-                  </span>
-                </td>
-                <td>
-                  <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', textDecoration: 'underline' }}>
-                    Éditer le profil
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default Dashboard;

@@ -1,221 +1,815 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES (Thème Premium Slate & Emerald)
+   ========================================================================== */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-/* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-:root {
-  --bg-color: #f8fafc;
-  --surface-color: #ffffff;
-  --primary-color: #1e293b; 
-  --accent-color: #3b82f6; 
-  --success-color: #10b981;
-  --danger-color: #ef4444;
-  --text-main: #334155;
+  /* Couleurs de marque */
+  --primary-color: #10b981; /* Vert Émeraude */
+  --primary-hover: #059669;
+  --dark-slate: #0f172a;    /* Bleu nuit très profond */
+  --dark-slate-light: #1e293b;
+  
+  /* Couleurs de fond */
+  --bg-app: #f8fafc;        /* Gris très clair pour les dashboards */
+  --bg-card: #ffffff;
+  
+  /* Texte et Bordures */
+  --text-main: #0f172a;
   --text-muted: #64748b;
-  --border-radius: 16px; /* Bords bien arrondis pour l'élégance */
+  --border-color: #e2e8f0;
+  
+  /* Alertes & Statuts */
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --success: #22c55e;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* ==========================================================================
+   2. RESET ET STYLES DE BASE (SaaS Mesh Gradient Background)
+   ========================================================================== */
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-color);
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Premium Soft Mesh Gradient */
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, rgba(15, 23, 42, 0.06) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 40%);
+  background-attachment: fixed; /* Keeps the gradient stable when scrolling */
+  
   color: var(--text-main);
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- Structure Bento Grid --- */
-.bento-container {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-top: 20px;
+/* ==========================================================================
+   3. COMPOSANTS PARTAGÉS (Boutons, Headers, Conteneurs)
+   ========================================================================== */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.bento-card {
-  background-color: var(--surface-color);
-  padding: 24px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 30px;
 }
 
-.bento-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* --- Typographie --- */
-.title-elegant {
-  font-size: 1.75rem;
+.dashboard-title {
+  font-size: 24px;
   font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  color: var(--dark-slate);
+  margin: 0;
 }
 
-/* --- Boutons et Badges --- */
+/* Boutons Globaux */
 .btn-primary {
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: white;
-  padding: 10px 20px;
   border: none;
+  padding: 10px 20px;
   border-radius: 8px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
-.badge-success {
-  background-color: #d1fae5;
-  color: var(--success-color);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. PAGE DE CONNEXION (Login.jsx)
+   ========================================================================== */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-slate); 
+  background-image: radial-gradient(circle at top, var(--dark-slate-light) 0%, var(--dark-slate) 100%);
+  padding: 20px;
+  margin: -20px; /* Compense le padding par défaut si existant */
+}
+
+.login-card {
+  background: var(--bg-card);
+  padding: 48px 40px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.05), 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark-slate);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.login-logo span {
+  color: var(--primary-color);
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: var(--bg-app);
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--bg-card);
+}
+
+.error-message {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--danger);
+}
+
+/* ==========================================================================
+   5. GRILLES ET CARTES (Dashboard Étudiant & Professeur)
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.quiz-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+.quiz-card h3 {
+  color: var(--dark-slate);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.quiz-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.quiz-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e0e7ff;
+  color: #4338ca;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   6. MOTEUR D'EXAMEN (ActiveQuiz.jsx / Interface Étudiant en plein test)
+   ========================================================================== */
+.exam-topbar {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  padding: 15px 20px;
+  border-bottom: 3px solid var(--danger);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.timer-display {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--dark-slate);
+}
+
+.timer-warning {
+  color: var(--danger);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.question-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.question-title {
+  font-size: 18px;
+  color: var(--dark-slate);
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
-.badge-danger {
-  background-color: #fee2e2;
-  color: var(--danger-color);
-  padding: 6px 12px;
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-label:hover {
+  background-color: var(--bg-app);
+}
+
+.option-label input[type="radio"] {
+  margin-right: 15px;
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   7. DASHBOARD ADMINISTRATEUR (AdminDashboard.jsx)
+   ========================================================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.stat-box h3 {
+  color: var(--text-muted);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  border: 1px solid var(--border-color);
+}
+
+.admin-table th, .admin-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table th {
+  background-color: var(--dark-slate);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background-color: var(--bg-app);
+}
+
+/* Dashboard Administrator Stats */
+.stat-box {
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
+  
+  padding: 30px;
+  border-radius: 16px; /* Slightly softer corners */
+  border: 1px solid rgba(255, 255, 255, 0.8); /* White border for crisp edge */
+  text-align: center;
+  box-shadow: 
+    0 10px 25px -5px rgba(15, 23, 42, 0.05),
+    0 8px 10px -6px rgba(15, 23, 42, 0.01),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6); /* Inner highlight */
+  transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+}
+
+.stat-box h3 {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* Admin Table */
+.admin-table {
+  width: 100%;
+  border-collapse: separate; /* Required for border-radius on tables */
+  border-spacing: 0;
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.admin-table th, .admin-table td {
+  padding: 18px 24px;
+  text-align: left;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.admin-table th {
+  background-color: rgba(15, 23, 42, 0.03); /* Very light slate for header */
+  color: var(--text-main);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* ==========================================================================
+   THÈME "AURORA GLASSMORPHISM" (Ultra-Premium Dark Mode)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(30, 41, 59, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-cyan: #06b6d4;
+  --accent-purple: #8b5cf6;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: var(--text-main);
+  background-color: #020617; /* Fond noir profond */
+  /* Animation Aurora en arrière-plan */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15), transparent 25%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 20px;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* --- STATS CARDS --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.stat-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
-  font-size: 0.85rem;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Ligne lumineuse en haut de chaque carte */
+.stat-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.stat-box:hover::before {
+  opacity: 1;
+}
+
+.stat-box h3 {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
   font-weight: 600;
 }
 
-/* --- Tableaux épurés --- */
-.elegant-table {
+.stat-number {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- ADMIN TABLE --- */
+.table-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.elegant-table th {
+.admin-table th, .admin-table td {
+  padding: 20px;
   text-align: left;
-  padding: 16px 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-  border-bottom: 2px solid var(--bg-color);
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.elegant-table td {
-  padding: 16px 12px;
-  border-bottom: 1px solid var(--bg-color);
+.admin-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.btn-action {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   FIXES: STUDENT DASHBOARD & ACTIVE QUIZ (Aurora Theme)
+   ========================================================================== */
+
+/* --- Student Exams Grid --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.quiz-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff; /* Forces text to be white instead of dark green */
+  margin: 0 0 10px 0;
+}
+
+.quiz-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: auto;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-start:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* --- Active Quiz View --- */
+.question-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.question-title {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03); /* Removes the solid white background */
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #f8fafc;
+}
+
+.option-label:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: var(--accent-cyan);
+}
+
+/* Fix for the Admin Table grey background */
+.admin-table td, .admin-table th {
+  background: transparent !important; 
+  color: #f8fafc;
+}
+
+/* ==========================================================================
+   FIXES: ADMIN TABLE & TEACHER FORMS
+   ========================================================================== */
+
+/* --- 1. Force the Admin Table to be Transparent --- */
+.table-container {
+  background: var(--glass-bg) !important;
+}
+
+.admin-table, 
+.admin-table tbody, 
+.admin-table tr, 
+.admin-table td, 
+.admin-table th {
+  background: transparent !important; /* Removes that ugly grey background */
+  color: #f8fafc !important; /* Forces text to be white */
+}
+
+.admin-table tr:hover td {
+  background: rgba(255, 255, 255, 0.05) !important; /* Subtle hover effect */
+}
+
+
+/* --- 2. Dark Glassmorphism Form Styles (For Teacher Pages) --- */
+.glass-form-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input, 
+.form-select {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(15, 23, 42, 0.6); /* Dark, semi-transparent background */
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.form-input:focus, 
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+/* Fix dropdown options so they are readable on Windows */
+.form-select option {
+  background: #0f172a;
+  color: #ffffff;
 }
