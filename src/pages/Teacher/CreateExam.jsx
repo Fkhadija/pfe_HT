@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function CreateExam() {
   const navigate = useNavigate();
   
-  // etat pour stocker toutes les infos du formulaire
   const [examData, setExamData] = useState({
     title: '',
     duration: '',

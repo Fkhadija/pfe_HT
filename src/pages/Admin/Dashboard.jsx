@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
-  // Simulation de données pour correspondre à votre capture d'écran
   const [stats, setStats] = useState({
     students: 150,
     exams: 24,
@@ -21,7 +20,6 @@ export default function AdminDashboard() {
         <h1 className="dashboard-title">Vue d'ensemble de la plateforme</h1>
       </div>
 
-      {/* C'est cette classe 'stats-grid' qui va placer les éléments côte à côte */}
       <div className="stats-grid">
         <div className="stat-box">
           <h3>Étudiants Inscrits</h3>
@@ -44,8 +42,6 @@ export default function AdminDashboard() {
           Gestion des utilisateurs
         </h2>
       </div>
-
-      {/* La classe 'admin-table' va styliser proprement le tableau */}
       <table className="admin-table">
         <thead>
           <tr>
