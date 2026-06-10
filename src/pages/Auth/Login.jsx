@@ -1,40 +1,63 @@
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import './Auth.css';
 
-function Login() {
-  // Cet outil nous permettra de rediriger l'utilisateur après sa connexion
+export default function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  // Fonction factice pour simuler la connexion pour le moment
   const handleLogin = (e) => {
-    e.preventDefault(); // Empêche la page de se recharger
-    // Pour l'instant, on redirige directement vers l'espace étudiant pour tester
-    navigate('/student');
+    e.preventDefault();
+    // Redirection vers l'espace étudiant pour tester
+    navigate('/student'); 
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px', fontFamily: 'sans-serif' }}>
-      <h2>Connexion à la Plateforme</h2>
-      
-      {/* Formulaire très basique */}
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', width: '300px', gap: '15px' }}>
+    /* L'encadré blanc va s'afficher grâce à ces classes */
+    <div className="auth-wrapper">
+      <div className="auth-card" style={{ maxWidth: '450px' }}>
         
-        <div>
-          <label>Email :</label>
-          <input type="email" required style={{ width: '100%', padding: '8px' }} />
+        <h1 className="auth-title">Bon retour</h1>
+        <p className="auth-subtitle">Entrez vos identifiants pour accéder à la plateforme</p>
+
+        <form onSubmit={handleLogin}>
+          
+          <div className="auth-form-group">
+            <label className="auth-label">ADRESSE EMAIL</label>
+            <input 
+              type="email" 
+              className="auth-input"
+              placeholder="ex. etudiant@quiz.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="auth-form-group">
+            <label className="auth-label">MOT DE PASSE</label>
+            <input 
+              type="password" 
+              className="auth-input"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="auth-button">
+            Se connecter
+          </button>
+
+        </form>
+
+        <div className="auth-footer">
+          Vous n'avez pas de compte ? <Link to="/register" className="auth-link">Créer un compte</Link>
         </div>
 
-        <div>
-          <label>Mot de passe :</label>
-          <input type="password" required style={{ width: '100%', padding: '8px' }} />
-        </div>
-
-        <button type="submit" style={{ padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', cursor: 'pointer' }}>
-          Se connecter
-        </button>
-        
-      </form>
+      </div>
     </div>
   );
 }
-
-export default Login;

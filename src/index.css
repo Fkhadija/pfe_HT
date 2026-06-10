@@ -813,3 +813,187 @@ body {
   background: #0f172a;
   color: #ffffff;
 }
+
+
+
+/* ==========================================================================
+   EXPORT PDF & IMPRESSION (Attestation & Résultats)
+   ========================================================================== */
+@media print {
+  /* On cache tout ce qui ne doit pas apparaître sur le PDF (les boutons, les menus) */
+  .no-print, .dashboard-header {
+    display: none !important;
+  }
+
+  /* On force le fond à être blanc pour l'imprimante/le PDF */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* On supprime les effets de verre (glassmorphism) pour avoir un PDF net */
+  .glass-form-container {
+    background: white !important;
+    border: 2px solid #ccc !important;
+    box-shadow: none !important;
+    color: black !important;
+  }
+
+  .dashboard-title {
+    background: none !important;
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+  }
+}
+
+/* ==========================================================================
+   MODE SOMBRE (DARK MODE OVERRIDES)
+   ========================================================================== */
+
+/* Transition fluide pour éviter que ça pique les yeux lors du changement */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Quand le body a la classe 'dark-mode' (ajoutée par React) */
+body.dark-mode {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* 1. On inverse les fonds des conteneurs principaux */
+body.dark-mode .landing-container,
+body.dark-mode .auth-wrapper,
+body.dark-mode .page-container {
+  background-color: #0f172a !important;
+}
+
+/* 2. On assombrit toutes les cartes blanches (Login, Fonctionnalités, etc.) */
+body.dark-mode .auth-card,
+body.dark-mode .feature-card,
+body.dark-mode .hero-section,
+body.dark-mode .section-wrapper,
+body.dark-mode .contact-section {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* 3. On inverse les textes (Titres, Sous-titres, Labels) */
+body.dark-mode .auth-title,
+body.dark-mode .section-title,
+body.dark-mode .hero-title,
+body.dark-mode .feature-card h3,
+body.dark-mode .auth-label {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .auth-subtitle,
+body.dark-mode .section-subtitle,
+body.dark-mode .hero-subtitle,
+body.dark-mode .feature-card p,
+body.dark-mode .role-card {
+  color: #94a3b8 !important;
+}
+
+/* 4. On assombrit les champs de saisie (Inputs) */
+body.dark-mode .auth-input,
+body.dark-mode .contact-input,
+body.dark-mode .contact-textarea {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .auth-input:focus,
+body.dark-mode .contact-input:focus {
+  border-color: #38bdf8 !important;
+}
+
+/* 5. Les cartes de sélection de rôle (Espace étudiant, etc.) */
+body.dark-mode .role-card {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .role-card.selected {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+
+/* ==========================================================================
+   RESTAURATION DE LA GRILLE DU DASHBOARD
+   ========================================================================== */
+
+/* La grille pour aligner les 3 statistiques */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Le style des cartes (version claire par défaut) */
+.stat-box {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.stat-box h3 {
+  color: #64748b;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.stat-box .stat-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: #2563eb;
+  margin: 0;
+}
+
+/* Le style du tableau d'administration */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.admin-table th, .admin-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+/* Le bouton Editer */
+.btn-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}

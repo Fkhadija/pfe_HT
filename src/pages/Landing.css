@@ -1,0 +1,208 @@
+/* src/pages/Landing.css */
+.landing-container {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
+.animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
+
+/* --- SECTIONS --- */
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.hero-title span {
+  color: #2563eb; /* Bleu institutionnel */
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover { background-color: #1d4ed8; transform: translateY(-2px); }
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+  padding: 80px 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.contact-input, .contact-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.contact-textarea { resize: vertical; min-height: 120px; }
+
+/* src/pages/Landing.css */
+
+/* ... (Garder vos animations fadeInUp et fadeIn ici) ... */
+
+.landing-container {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* --- TITRES DE SECTIONS --- */
+.section-wrapper {
+  padding: 80px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+}
+
+/* --- GRILLE DES FONCTIONNALITÉS --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+.feature-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background-color: #eff6ff; /* Fond bleu clair */
+  color: #2563eb; /* Bleu principal */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+
+.feature-card p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* --- FOOTER --- */
+.landing-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid #1e293b;
+  margin-top: 50px;
+}
+
+.landing-footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Classes pour les fonds de la page d'accueil */
+.hero-bg {
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border-bottom: 1px solid #e2e8f0;
+  padding-top: 100px;
+}
+
+.step-bg {
+  background-color: #eff6ff;
+}
+
+/* Le mode sombre écrase ces fonds clairs */
+body.dark-mode .hero-bg,
+body.dark-mode .step-bg {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
