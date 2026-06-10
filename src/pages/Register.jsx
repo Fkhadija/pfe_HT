@@ -17,7 +17,7 @@ export default function Register() {
     
     // Redirection en fonction du rôle pour l'exemple
     if (role === 'etudiant') navigate('/student');
-    if (role === 'enseignant') navigate('/teacher/create/questions');
+    if (role === 'enseignant') navigate('/teacher');
     if (role === 'admin') navigate('/admin');
   };
 
